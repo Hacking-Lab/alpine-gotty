@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+  alpine-gotty:
+    image: hackinglab/alpine-gotty:3.2
+    environment:
+    - AUTHOR=e1
+    - HL_USER_USERNAME=root
+    - HL_USER_PASSWORD=compass
+    ports:
+      - 8080:8080
+
+
+

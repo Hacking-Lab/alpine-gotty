@@ -1,0 +1,22 @@
+#!/usr/bin/with-contenv sh
+
+echo "================================="
+echo $HL_USER_USERNAME
+echo "================================="
+
+source /etc/hluser
+
+homedir=$( getent passwd "$HL_USER_USERNAME" | cut -d: -f6 )
+userid=$( id -u "$HL_USER_USERNAME" ) 
+groupid=$( id -g "$HL_USER_USERNAME" )
+cd $homedir
+echo "running gotty with the uid: " $userid
+echo "running gotty with the gid: " $groupid
+echo "running gotty in the following homedir: " $homedir
+echo "permissions in $homedir"
+ls -al $homedir
+touch $homedir/.zshrc
+chown $userid:$userid $homedir/.zshrc
+exec sudo -u $HL_USER_USERNAME /usr/local/bin/gotty --port 8080 --permit-write /bin/zsh
+
+
