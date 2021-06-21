@@ -23,7 +23,7 @@ RUN apk -U upgrade && \
     tar tmux tree \
     vim \
     xz \
-    zsh && 
+    zsh && \
     GOPATH=/tmp/gotty go get -u github.com/sorenisanerd/gotty && \
     mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
     apk del go musl-dev && \
