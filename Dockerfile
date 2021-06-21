@@ -8,24 +8,23 @@ ENV LANG="en_US.UTF-8" \
 
 RUN apk -U upgrade && \
     apk --update add \
-      bash \
-      sudo \
-      curl \
-      fping \
-      go git \
-      htop \
-      iftop iotop \
-      jq \
-      nmap \
-      rsync \
-      screen \
-      wget \
-      tar tmux tree \
-      vim \
-      xz \
-      zsh \
-      && \
-    GOPATH=/tmp/gotty go get github.com/yudai/gotty && \
+    bash \
+    sudo \
+    curl \
+    fping \
+    go git \
+    htop \
+    iftop iotop \
+    jq \
+    nmap \
+    rsync \
+    screen \
+    wget \
+    tar tmux tree \
+    vim \
+    xz \
+    zsh && 
+    GOPATH=/tmp/gotty go get -u github.com/sorenisanerd/gotty && \
     mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
     apk del go musl-dev && \
     echo 'set-option -g default-shell /bin/zsh' >> /root/.tmux.conf && \
@@ -35,4 +34,6 @@ ADD root /
 
 EXPOSE 8080
 
+# RUN GOPATH=/tmp/gotty go get -u github.com/yudai/gotty && \
+# RUN GOPATH=/tmp/gotty go get -u github.com/roughentomologyx/gotty && \
 
