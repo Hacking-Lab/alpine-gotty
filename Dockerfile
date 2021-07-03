@@ -24,7 +24,7 @@ RUN apk -U upgrade && \
     vim \
     xz \
     zsh && \
-    GOPATH=/tmp/gotty go get -u github.com/sorenisanerd/gotty && \
+    GOPATH=/tmp/gotty go get -u github.com/yudai/gotty && \
     mv /tmp/gotty/bin/gotty /usr/local/bin/ && \
     apk del go musl-dev && \
     echo 'set-option -g default-shell /bin/zsh' >> /root/.tmux.conf && \
@@ -36,4 +36,4 @@ EXPOSE 8080
 
 # RUN GOPATH=/tmp/gotty go get -u github.com/yudai/gotty && \
 # RUN GOPATH=/tmp/gotty go get -u github.com/roughentomologyx/gotty && \
-
+# GOPATH=/tmp/gotty go get -u github.com/sorenisanerd/gotty && \
